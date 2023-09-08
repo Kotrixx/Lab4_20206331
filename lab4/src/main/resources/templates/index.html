@@ -22,8 +22,14 @@
             <div class="col-md-5 mx-3">
                 <div class="fw-light h5">Busca sitios por departamento o provincia</div>
                 <div class="input-group input-group-lg mb-3">
-                    <input class="form-control border rounded-pill" type="search" value="Buscar"
-                           id="example-search-input">
+                    <form method="post" th:action="@{/buscar}">
+                        <div class="input-group mb-3">
+                            <input name="searchField" class="form-control" type="text" placeholder="Buscar por nombre" th:value="${textoBuscado}" >
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <a class="btn btn-outline-secondary" th:href="@{/}">Limpiar</a>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -48,6 +54,7 @@
             <td th:text="${emp.firstName}"></td>
             <td th:text="${emp.lastName}"></td>
             <td th:text="${emp.jobId}"></td>
+            <td></td>
             <td th:text="${emp.departmentId}"></td>
             <td th:text="${emp.phoneNumber}"></td>
             <td th:text="${emp.salary}"></td>
