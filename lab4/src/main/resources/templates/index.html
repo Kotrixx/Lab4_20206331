@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+          crossorigin="anonymous">
+    <title>Lista jugadores</title>
+</head>
+<body>
+<div class="container">
+    <h2>Lista Jugadores</h2>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/jugador/nuevo}">Empleados</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/jugador/nuevo}">Historial</a>
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/jugador/nuevo}">Reportes</a>
+
+    <!--Barra de busqueda-->
+    <div class="container py-2">
+        <!--Barra de busqueda-->
+        <div class="">
+            <div class="col-md-5 mx-3">
+                <div class="fw-light h5">Busca sitios por departamento o provincia</div>
+                <div class="input-group input-group-lg mb-3">
+                    <input class="form-control border rounded-pill" type="search" value="Buscar"
+                           id="example-search-input">
+                </div>
+            </div>
+        </div>
+        <!--Barra de busqueda-->
+    </div>
+    <!--Barra de busqueda-->
+    <table class="table table-sm">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Puesto</th>
+            <th>Departamento</th>
+            <!--<th>Ciudad</th>-->
+            <th>Numero de telefono</th>
+            <th>Salario</th>
+            <th>Boton de editar</th>
+            <th></th>
+        </tr>
+        <tr th:each="emp, info: ${listaEmployee}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${emp.firstName}"></td>
+            <td th:text="${emp.lastName}"></td>
+            <td th:text="${emp.jobId}"></td>
+            <td th:text="${emp.departmentId}"></td>
+            <td th:text="${emp.phoneNumber}"></td>
+            <td th:text="${emp.salary}"></td>
+            <td><a class="btn btn-warning" th:href="@{'/jugador/borrar?id=' + ${emp.employeeId}}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/jugador/borrar?id=' + ${emp.employeeId   }}">Borrar</a></td>
+        </tr>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
